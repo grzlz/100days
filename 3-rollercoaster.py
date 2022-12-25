@@ -1,8 +1,11 @@
-print("Welcome to the rollercoaster")
+# Check if number is odd or even
+print("Welcome to eveness number calculator!")
 
-height = int(input("What is your height in cm? "))
+number = int(input("Introduce a number. (Must be integer) "))
 
-if height > 120:
-    print("You can ride")
+residual = number % 2
+
+if residual == 0:
+    print("The number is even.")
 else:
-    print("Sorry, you can't ride")
+    print("The number is odd.")
