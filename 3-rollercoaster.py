@@ -4,12 +4,19 @@ height = int(input("Introduce height: "))
 
 
 if height > 120:
+    
     age = int(input("Introduce age: "))
-    if age >= 18:
-        print("Pay 12.")
-    elif age < 18 and age >= 12:
-        print("Pay $7.")
+    photo = input("Do you want a photo? (y/n)\n")
+    if age < 12:
+        cost = 5
+    elif age <= 18:
+        cost = 7
     else: 
-        print("Pay $5.")
+        cost = 12
+    
+    if photo == "y":
+        cost += 2
+
+    print(f"Please pay ${cost}.")
 else:
     print("No ride for you :/")
