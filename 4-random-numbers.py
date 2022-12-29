@@ -1,12 +1,62 @@
 import random 
 
-# Banker roulette
-names = input("Introduce the names of the involved bankers separated by a comma.\n")
+# Rock paper scissors
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
 
-names_list = names.split(", ")
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
 
-list_length = len(names_list)
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
 
-choose_index = random.randint(0, list_length - 1)
+selection = int(input("0 for Rock, 1 for Paper, 2 for Scissors.\n"))
 
-print(f"{names_list[choose_index]} will pay the bill.a,")
+computer = random.randint(0, 2)
+
+options = [rock, paper, scissors]
+
+print(f"You chose:\n{options[selection]}\nComputer chose:\n{options[computer]}")
+
+if selection == computer:
+    print("It's a draw")
+
+elif selection == 0 and computer == 1:
+    print("You lose")
+
+elif selection == 0 and computer == 2:
+    print("You won!")
+
+elif selection == 1 and computer == 0:
+    print("You won!")
+
+elif selection == 1 and computer == 2:
+    print("You lost!")
+
+elif selection == 2 and computer == 1:
+    print("You won!")
+
+else:
+    print("You lost!")
+
+
+
+1
