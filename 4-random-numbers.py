@@ -1,10 +1,12 @@
 import random 
 
-random_integer = random.randint(1, 10)
-print(random_integer)
+# Banker roulette
+names = input("Introduce the names of the involved bankers separated by a comma.\n")
 
-random_float = random.random()
-print(random_float)
+names_list = names.split(", ")
 
-r = random_integer + random_float
-print(r)
+list_length = len(names_list) - 1
+
+choose_index = random.randint(0, list_length)
+
+print(f"{names_list[choose_index]} will pay the bill.a,")
