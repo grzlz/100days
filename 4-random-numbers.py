@@ -39,24 +39,14 @@ print(f"You chose:\n{options[selection]}\nComputer chose:\n{options[computer]}")
 if selection == computer:
     print("It's a draw")
 
-elif selection == 0 and computer == 1:
-    print("You lose")
-
 elif selection == 0 and computer == 2:
     print("You won!")
 
-elif selection == 1 and computer == 0:
-    print("You won!")
-
-elif selection == 1 and computer == 2:
+elif selection == 2 and computer == 0:
     print("You lost!")
 
-elif selection == 2 and computer == 1:
+elif selection > computer:
     print("You won!")
 
 else:
     print("You lost!")
-
-
-
-1
