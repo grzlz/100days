@@ -1,15 +1,18 @@
-# Fizz buz. If number divisible by 3, print Fizz, if divisible by 5 print Buzz. If divisible by 3 and 5, print fizzbuz
+# Create a password generator 
 
-for i in range(1, 101):
-    if i % 3 == 0 and i % 5 == 0:
-        print("Fizzbuz")
-    
-    elif i % 3 == 0:
-        print("Fizz")
-    
-    elif 1 % 5 == 0:
-        print("Buzz")
-    
-    else:
-        print(i)
-    
+import random
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+print("Welcome to the PyPassword Generator!")
+# nr_letters= int(input("How many letters would you like in your password?\n")) 
+# nr_symbols = int(input(f"How many symbols would you like?\n"))
+# nr_numbers = int(input(f"How many numbers would you like?\n"))
+ 
+pwd = ''
+
+pwd += letters[0]
+pwd += letters[4]
+
+print(pwd)
