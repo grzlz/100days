@@ -1,7 +1,7 @@
-# Calculate the highest score from a list
+# Calculate the sum of all even number from 1 to 100 including 100
 
 acumulator = 0
-for i in range(1, 10):
+for i in range(2, 101, 2):
     acumulator += i
 
 print(acumulator)
