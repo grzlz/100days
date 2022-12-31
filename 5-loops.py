@@ -25,7 +25,7 @@ for symbol in range(1, nr_symbols + 1):
 
 shuffle(pwd_list)
 
-pwd = ""
+pwd = "  "
 for i in pwd_list:
     pwd += i
 
