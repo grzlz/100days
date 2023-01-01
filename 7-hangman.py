@@ -14,6 +14,12 @@ display = []
 for i in chosen_word:
     display.append("_")
 
+while "_" in display:
+    for i in range(len(display)):
+        print(display     )
+        display[i] = 'a'
+
+
 for i in range(len(chosen_word)):
 
     if guessed_letter == chosen_word[i]:
@@ -21,5 +27,4 @@ for i in range(len(chosen_word)):
         display[i] = guessed_letter
     
 
-print(display)
 
