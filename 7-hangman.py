@@ -72,8 +72,11 @@ display = []
 for i in chosen_word:
     display.append("_")
 
+# Create end of game variable equal to False, we will loop while it's true
+end_of_game = False
+
 # Use a while loop to let the user guess again until there are no more "_" to display.
-while "_" in display:
+while not end_of_game:
     guessed_letter = input("Guess a letter.\n")
     guessed_letter = guessed_letter.lower()
 
@@ -90,9 +93,9 @@ while "_" in display:
     print(display)
 
     if lives == 0:
+        end_of_game = True
         print("You lose!")
-        break
 
     if "_" not in display:
+        end_of_game = True
         print("You won!")   
-        break
