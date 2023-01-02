@@ -90,7 +90,7 @@ while not end_of_game:
             display[i] = guessed_letter
 
     print(stages[lives])
-    print(display)
+    print(f"{' '.join(display)}")
 
     if lives == 0:
         end_of_game = True
