@@ -1,66 +1,9 @@
-from random import choice
+from hangman import stages, logo
+from getpass import getpass
+import os 
+print(logo)
 
-
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
-word_list = ["ardvark", "baboon", "camel"]
-
-chosen_word = choice(word_list)
+chosen_word = getpass("Choose the word to guess: ").lower()
 
 
 # Create a variable called 'lives' to keep track of the number of lifes left. Set lives equal to 6
@@ -75,26 +18,26 @@ for i in chosen_word:
 # Create end of game variable equal to False, we will loop while it's true
 end_of_game = False
 
+
 # Use a while loop to let the user guess again until there are no more "_" to display.
 while not end_of_game:
-    guessed_letter = input("Guess a letter.\n")
-    guessed_letter = guessed_letter.lower()
+    guessed_letter = input("Guess a letter: ").lower()
+    os.system('cls')
 
     if guessed_letter not in chosen_word:
         lives -= 1
-        
+        print(f"'{guessed_letter}' is not in the chosen word. Try again!")
+        if lives == 0:
+            end_of_game = True
+            print("You lose!")
 
     for i in range(len(chosen_word)):
-
         if guessed_letter == chosen_word[i]:
             display[i] = guessed_letter
 
-    print(stages[lives])
     print(f"{' '.join(display)}")
 
-    if lives == 0:
-        end_of_game = True
-        print("You lose!")
+    print(stages[lives])
 
     if "_" not in display:
         end_of_game = True
