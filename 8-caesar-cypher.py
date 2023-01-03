@@ -1,9 +1,15 @@
-# Create a new function called greet()
-# Write 3 print statements, call the function and run the code
+# You are painting a wall.
+# Given a random height and width of wall, calculate how many cans of paint you'll need to buy.
+# A can of pain and cover 5sqm.
+# Round up the result
 
-# Functions with more than 1 input
+def get_cans(height, width):
+    sqm = height * width
+    number_of_cans = round(sqm / 5)
 
-def greet_with(name, location):
-    print(f"Hello {name}.\nHow is it in {location}?")
+    return number_of_cans
 
-greet_with("Nano", "PE")
+height = int(input("Introduce Height: "))
+width = int(input("Introduce Width: "))
+
+print(f"Yoy should get {get_cans(height, width)} cans.")
