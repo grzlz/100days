@@ -1,19 +1,28 @@
-# Prime number checker
-
-input_number = int(input("Introduce a number: "))
-
-def prime_number(input_number):
-    found_prime = True
-    for number in range(2, input_number):
-        if input_number % number == 0:
-            found_prime = False
+# Caesar cypher
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
-    if found_prime:
-        print("It's a prime number!")
+# Create a function called 'encrypt' that takes the text and shift as inputs
+# Inside the 'encrypt' function, shift each letter of the text forwards in the alphabet by the shift amount and print the encripted text
 
-    else:
-        print("It's not a prime number.")
+def encrypt(text, shift):
+    
+    text_list = [i for i in text]
 
+    encrypted_word = []
 
-prime_number(input_number)
+    for i in range(len(text_list)):
+        print(i)
+
+        for j in range(len(alphabet)):
+            print(j)
+
+            if alphabet[j] == text_list[i]:
+
+                print(alphabet[j], text_list[i], alphabet[j + shift])
+                encrypted_word += alphabet[j + shift]
+
+    print("".join(encrypted_word))
+
+encrypt("funciona", 2)
+
