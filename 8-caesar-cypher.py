@@ -1,11 +1,9 @@
 # Create a new function called greet()
 # Write 3 print statements, call the function and run the code
 
-# Add name argument to function
+# Functions with more than 1 input
 
-def greet(name):
-    print(f"Hola {name}")
-    print("Funciona")
-    print("Necesito aprender shortcuts en el teclado")
+def greet_with(name, location):
+    print(f"Hello {name}.\nHow is it in {location}?")
 
-greet("hola")
+greet_with("Nano", "PE")
