@@ -5,7 +5,6 @@ print(logo)
 
 chosen_word = getpass("Choose the word to guess: ").lower()
 
-
 # Create a variable called 'lives' to keep track of the number of lifes left. Set lives equal to 6
 
 lives = 6
@@ -17,7 +16,6 @@ for i in chosen_word:
 
 # Create end of game variable equal to False, we will loop while it's true
 end_of_game = False
-
 
 # Use a while loop to let the user guess again until there are no more "_" to display.
 while not end_of_game:
