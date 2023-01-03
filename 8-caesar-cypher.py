@@ -1,15 +1,12 @@
-# You are painting a wall.
-# Given a random height and width of wall, calculate how many cans of paint you'll need to buy.
-# A can of pain and cover 5sqm.
-# Round up the result
+# Prime number checker
 
-def get_cans(height, width):
-    sqm = height * width
-    number_of_cans = round(sqm / 5)
+input_number = int(input("Introduce a number: "))
 
-    return number_of_cans
-
-height = int(input("Introduce Height: "))
-width = int(input("Introduce Width: "))
-
-print(f"Yoy should get {get_cans(height, width)} cans.")
+def prime_number(input_number):
+    for number in range(2, input_number):
+        if input_number % number == 0:
+            return(print("Not a prime number."))
+        else: 
+            return(print("It is a primer number!"))
+    
+prime_number(input_number)
