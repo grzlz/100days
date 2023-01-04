@@ -5,30 +5,19 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 # Create a function called 'encrypt' that takes the text and shift as inputs
 # Inside the 'encrypt' function, shift each letter of the text forwards in the alphabet by the shift amount and print the encripted text
 # Check if user wanted to encrypt or decrypt the message. 
+# Combine both functions into a function calles caesar with three arguments: text, shift and task
 
 
-def encrypt(text, shift):
+def caesar(text, shift, task):
+    if task == "decode":
+        shift *= -1
 
-    encrypted_word = ""
-
-    for i in text:
+    new_word = ""
+    for letter in text:
+        letter_index = alphabet.index(letter)
+        new_word += alphabet[letter_index + shift]
     
-        letter_index = alphabet.index(i)
-        encrypted_word += alphabet[letter_index + shift]
-
-    print(f"The encrypted word is {encrypted_word}.")
-
-
-def decrypt(text, shift):
-
-    decrypted_word = ""
-
-    for i in text:
-        letter_index = alphabet.index(i)
-        decrypted_word += alphabet[letter_index - shift]
-
-    print(f"The decrypted word is {decrypted_word}.")
-
+    print(f"You requested to {task} and the word is: {new_word}")
 
 keep_working = True
 
@@ -38,18 +27,14 @@ while keep_working:
     text = input("Write your message: ")
     shift = int(input("Type the shift number: "))
 
-    if task == "encode":
-        encrypt(text, shift)
-
-    elif task == "decode":
-        decrypt(text, shift)
+    caesar(text, shift, task)
 
     if input("Do you want to continue? ") == "No":
         keep_working = False
 
 
 
-
+    
 
 
  
