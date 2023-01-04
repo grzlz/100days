@@ -30,17 +30,22 @@ def decrypt(text, shift):
     print(f"The decrypted word is {decrypted_word}.")
 
 
-task = input("Do you want to encode or decode?\n")
+keep_working = True
 
-if task == "encode":
-    text_to_encode = input("Text to encode: ")
-
-    encrypt(text_to_encode, 1)
-
-elif task == "decode":
-    text_to_decode = input("Text to decode: ")
+while keep_working:
     
-    decrypt(text_to_decode, 1)
+    task = input("Do you want to encode or decode?\n")
+    text = input("Write your message: ")
+    shift = int(input("Type the shift number: "))
+
+    if task == "encode":
+        encrypt(text, shift)
+
+    elif task == "decode":
+        decrypt(text, shift)
+
+    if input("Do you want to continue? ") == "No":
+        keep_working = False
 
 
 
