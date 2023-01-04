@@ -3,27 +3,22 @@ from os import system
 
 # Create an empty list of bids
 
-bids = []
+bids_dict = {}
 
 # Create a function that stores name and bid
 def bidder(name, bid):
-    new_bidder = {
-        "name": name,
-        "bid": bid
-    }
-
-    bids.append(new_bidder)
+    bids_dict[name] = int(bid)
 
 # Create a function that returns the name and bid of the highest bid
-def get_highest_bid(bids_list):
+def get_highest_bid(bids_dict):
     
-    highest_bidder = bids_list[0]["name"]
-    highest_bid = bids_list[0]["bid"]
+    highest_bidder = ""
+    highest_bid = 0
 
-    for bid in bids_list:
-        if bid["bid"] > highest_bid:
-            highest_bid = bid["bid"]
-            highest_bidder = bid["name"]
+    for bidder in bids_dict:
+        if bids_dict[bidder] > highest_bid:
+            highest_bid = bids_dict[bidder]
+            highest_bidder = bidder
 
     print(f"The highest bidder is {highest_bidder} for ${highest_bid}.")
 
@@ -40,8 +35,10 @@ while new_bid:
         new_bid = False
     
     system("clear")
+    print(bids_dict)
 
 
 
-get_highest_bid(bids)
+
+get_highest_bid(bids_dict)
 
