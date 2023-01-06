@@ -19,62 +19,87 @@ def next_card():
     return card
 
 
-def check_for_winner(user_cards, dealer_cards, compare_cards):
-    user_sum = sum(user_cards)
-    dealer_sum = sum(dealer_cards)
 
+def check_for_winner(user_sum, dealer_sum):
     if user_sum == 21 and dealer_sum == 21:
-        return "It's a draw!"
+        return 0
 
     elif user_sum == 21:
-        return "You won!"
+        return 1
 
     elif dealer_sum == 21:
-        return "Dealer won!"
+        return 2
 
     elif user_sum > 21:
-        return f"Your count is {user_sum}. You lost!"
-
-    elif compare_cards:
-        if user_sum > dealer_sum:
-            return f"Your sum is {user_sum}, dealer's sum is {dealer_sum}. You won!"
-
-        else:
-            return f"Your sum is {user_sum}, dealer's sum is {dealer_sum}. Dealer won!"
+        return 3
 
     else: 
-        return f"Your current count is {user_sum}"
+        return 4
 
+def compare_cards():
+    if user_sum == dealer_sum:
+        return f"You got {user_sum} and the dealer {dealer_sum}. It's a draw!"
 
+    elif user_sum > dealer_sum:
+        return f"You got {user_sum} and the dealer {dealer_sum}. You won!"
+
+    else:
+        return f"You got {user_sum} and the dealer {dealer_sum}. You lost"
 
 if greeting == 'y':
 
     user_cards = initial_cards()
     dealer_cards = initial_cards()
-    compare_cards = False
 
     print(f"Your cards are {user_cards}\nDealer's first card is {dealer_cards[0]}.")
 
-    print(check_for_winner(user_cards, dealer_cards, compare_cards))
+    user_sum = sum(user_cards)
+    dealer_sum = sum(dealer_cards)
 
-    continue_playing = input("Do you want another card? ")
+    print(f"Your current count is {user_sum}.")
 
-    if continue_playing == "y":
-    
-        while compare_cards is not True:
+    if user_sum == 21:
+        print("You won!")
 
-            user_cards.append(next_card())
+    else:
+        continue_playing = input("Do you want another card? ")
 
-            if sum(user_cards) > 21:
-                print(check_for_winner(user_cards, dealer_cards, compare_cards))
-                break
+        if continue_playing == "n":
+            result = compare_cards()
+            print(result)
 
-            print(check_for_winner(user_cards, dealer_cards, compare_cards))
+        while continue_playing == "y":
+            new_card = next_card()
+            user_cards.append(new_card)
+            user_sum += new_card
+            print(f"Your cards are {user_cards}")
 
-            if input("Do you want another card? ") == "n":
-                compare_cards = True
-                print(check_for_winner(user_cards, dealer_cards, compare_cards))
 
-    elif continue_playing == "n":
-        compare_cards = True
-        print(check_for_winner(user_cards, dealer_cards, compare_cards))
+            print("inside while loop", user_sum, dealer_sum)
+
+            result = check_for_winner(user_sum, dealer_sum)
+
+            if result == 0:
+                print("It's a draw!")
+                continue_playing = False
+
+            elif result == 1:
+                print("You won!")
+                continue_playing = False
+
+            elif result == 2:
+                print("Dealer won!")
+                continue_playing = False
+            
+            elif result == 3:
+                print(f"Count is {user_sum}. You got busted! You lose.")
+                continue_playing = False
+
+            else:
+                continue_playing = input(f"Your current count is {user_sum}.\nDo you want another card? ")
+                result = compare_cards()
+                print(result)
+
+
+
+  
