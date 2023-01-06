@@ -70,6 +70,10 @@ if greeting == 'y':
 
         while continue_playing == "y":
             new_card = next_card()
+
+            if new_card == 11 and user_sum + new_card > 21:
+                new_card = 1
+
             user_cards.append(new_card)
             user_sum += new_card
             print(f"Your cards are {user_cards}")
