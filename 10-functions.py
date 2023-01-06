@@ -20,34 +20,25 @@ calculator_dict = {
 }
 
 num1 = int(input("What's the first number? "))
-
 for i in calculator_dict:
     print(i)
 
-operation_symbol = input("Pick an operation from the linea above: ")
-
-num2 = int(input("What's the second number?: "))
-
-
-
-function = calculator_dict[operation_symbol]
-answer = function(num1, num2)
-
-print(f"{num1} {operation_symbol} {num2} = {answer}")
-
 keep_going = True
 while keep_going:
-    old_answer = answer
 
-    if input(f"Type 'y' to continue calculating with {old_answer} or type 'n' to exit: ") == "n":
-        break
+    operation_symbol = input("Pick an operation from the linea above: ")
 
-    new_symbol = input("Pick an operation: ")    
-    new_number = int(input("What's the next number? "))
-    
-    function = calculator_dict[new_symbol]
-    answer = function(new_number, answer)
+    num2 = int(input("What's the next number?: "))
 
-    print(f"{old_answer} {new_symbol} {new_number} = {answer}")
+    function = calculator_dict[operation_symbol]
+    answer = function(num1, num2)
+
+
+
+    if input(f"Type 'y' to continue calculating with {answer} or type 'n' to exit: ") == "y":
+        num1 = answer
+
+    else:
+        keep_going = False
 
     
