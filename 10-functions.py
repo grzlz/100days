@@ -1,30 +1,53 @@
-# Create a function called days_in_month() which will take a year and a month as inputs
-# and will use this informantion to return the number of days in the month
+# Create a calculator  
 
-def is_leap(year):
-    if year % 4 == 0:
-        if year % 100 == 0:
-            if year % 400 == 0:
-                return True
-            else: 
-                return False
-                print("No leap year :(")
-        else: 
-            return True
-    else:
-        return False
+def add(n1, n2):
+    return n1 + n2
 
-def days_in_month(year, month):
-    month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]  
+def substract(n1, n2):
+    return n1 - n2
 
-    if is_leap(year):
-        month_days[1] += 1
+def multiply(n1, n2):
+    return n1 * n2
 
-    return month_days[month - 1]
+def divide(n1, n2):
+    return n1 / n2
 
-year = int(input("Enter a year: "))
-month = int(input("Enter a month: "))
+calculator_dict = {
+    "+": add,
+    "-": substract,
+    "*": multiply,
+    "/": divide
+}
 
-days = days_in_month(year, month)
+num1 = int(input("What's the first number? "))
 
-print(days)
+for i in calculator_dict:
+    print(i)
+
+operation_symbol = input("Pick an operation from the linea above: ")
+
+num2 = int(input("What's the second number?: "))
+
+
+
+function = calculator_dict[operation_symbol]
+answer = function(num1, num2)
+
+print(f"{num1} {operation_symbol} {num2} = {answer}")
+
+keep_going = True
+while keep_going:
+    old_answer = answer
+
+    if input(f"Type 'y' to continue calculating with {old_answer} or type 'n' to exit: ") == "n":
+        break
+
+    new_symbol = input("Pick an operation: ")    
+    new_number = int(input("What's the next number? "))
+    
+    function = calculator_dict[new_symbol]
+    answer = function(new_number, answer)
+
+    print(f"{old_answer} {new_symbol} {new_number} = {answer}")
+
+    
