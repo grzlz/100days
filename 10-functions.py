@@ -1,4 +1,5 @@
 # Create a calculator  
+import os 
 
 def add(n1, n2):
     return n1 + n2
@@ -20,7 +21,7 @@ calculator_dict = {
 }
 
 def calculator():
-    num1 = int(input("What's the first number? "))
+    num1 = float(input("What's the first number? "))
     for i in calculator_dict:
         print(i)
 
@@ -29,7 +30,7 @@ def calculator():
 
         operation_symbol = input("Pick an operation: ")
 
-        num2 = int(input("What's the next number?: "))
+        num2 = float(input("What's the next number?: "))
 
         function = calculator_dict[operation_symbol]
         answer = function(num1, num2)
@@ -41,6 +42,7 @@ def calculator():
 
         else:
             keep_going = False
+            os.system("clear")
             calculator()
 
 calculator()
