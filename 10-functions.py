@@ -26,12 +26,14 @@ for i in calculator_dict:
 keep_going = True
 while keep_going:
 
-    operation_symbol = input("Pick an operation from the linea above: ")
+    operation_symbol = input("Pick an operation: ")
 
     num2 = int(input("What's the next number?: "))
 
     function = calculator_dict[operation_symbol]
     answer = function(num1, num2)
+
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
 
 
 
