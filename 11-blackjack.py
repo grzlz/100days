@@ -100,3 +100,6 @@ if greeting == 'y':
     if continue_playing == "n":
         result = compare_cards()
         print(result)
+
+else: 
+    print("Bye!")
