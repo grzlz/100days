@@ -44,7 +44,7 @@ def compare_cards():
         return f"You got {user_sum} and the dealer {dealer_sum}. You won!"
 
     else:
-        return f"You got {user_sum} and the dealer {dealer_sum}. You lost"
+        return f"You got {user_sum} and the dealer {dealer_sum}. You lose!"
 
 if greeting == 'y':
 
@@ -59,14 +59,11 @@ if greeting == 'y':
     print(f"Your current count is {user_sum}.")
 
     if user_sum == 21:
-        print("You won!")
+        print(f"Your cards are {user_cards}, dealers are {dealer_cards}.\n You scored {user_sum}. You won!")
+        continue_playing = False
 
     else:
         continue_playing = input("Do you want another card? ")
-
-        if continue_playing == "n":
-            result = compare_cards()
-            print(result)
 
         while continue_playing == "y":
             new_card = next_card()
@@ -78,14 +75,11 @@ if greeting == 'y':
             user_sum += new_card
             print(f"Your cards are {user_cards}")
 
-
-            print("inside while loop", user_sum, dealer_sum)
-
             result = check_for_winner(user_sum, dealer_sum)
 
             if result == 0:
                 print("It's a draw!")
-                continue_playing = False
+                continue_playing = "False"
 
             elif result == 1:
                 print("You won!")
@@ -99,11 +93,10 @@ if greeting == 'y':
                 print(f"Count is {user_sum}. You got busted! You lose.")
                 continue_playing = False
 
-            else:
-                continue_playing = input(f"Your current count is {user_sum}.\nDo you want another card? ")
-                result = compare_cards()
-                print(result)
+            elif result == 4:
+                print(f"Count is {user_sum}.")
+                continue_playing = input("Do you want another card? ")
 
-
-
-  
+    if continue_playing == "n":
+        result = compare_cards()
+        print(result)
