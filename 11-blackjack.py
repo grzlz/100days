@@ -1,6 +1,6 @@
 # Create a black jack game
 from random import choice
-
+from os import system
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
@@ -48,58 +48,69 @@ def compare_cards():
 
 if greeting == 'y':
 
-    user_cards = initial_cards()
-    dealer_cards = initial_cards()
+    play_again = "y"
+    
+    while play_again == "y":
+        system("clear")
 
-    print(f"Your cards are {user_cards}\nDealer's first card is {dealer_cards[0]}.")
+        user_cards = initial_cards()
+        dealer_cards = initial_cards()
 
-    user_sum = sum(user_cards)
-    dealer_sum = sum(dealer_cards)
+        print(f"Your cards are {user_cards}\nDealer's first card is {dealer_cards[0]}.")
 
-    print(f"Your current count is {user_sum}.")
+        user_sum = sum(user_cards)
+        dealer_sum = sum(dealer_cards)
 
-    if user_sum == 21:
-        print(f"Your cards are {user_cards}, dealers are {dealer_cards}.\n You scored {user_sum}. You won!")
-        continue_playing = False
+        print(f"Your current count is {user_sum}.")
 
-    else:
-        continue_playing = input("Do you want another card? ")
+        if user_sum == 21:
+            print(f"Your cards are {user_cards}, dealers are {dealer_cards}.\n You scored {user_sum}. You won!")
+            continue_playing = False
+            play_again = input("Do yow want to keep playing? ")
 
-        while continue_playing == "y":
-            new_card = next_card()
+        else:
+            continue_playing = input("Do you want another card? ")
 
-            if new_card == 11 and user_sum + new_card > 21:
-                new_card = 1
+            while continue_playing == "y":
+                new_card = next_card()
 
-            user_cards.append(new_card)
-            user_sum += new_card
-            print(f"Your cards are {user_cards}")
+                if new_card == 11 and user_sum + new_card > 21:
+                    new_card = 1
 
-            result = check_for_winner(user_sum, dealer_sum)
+                user_cards.append(new_card)
+                user_sum += new_card
+                print(f"Your cards are {user_cards}")
 
-            if result == 0:
-                print("It's a draw!")
-                continue_playing = False
+                result = check_for_winner(user_sum, dealer_sum)
 
-            elif result == 1:
-                print("You won!")
-                continue_playing = False
+                if result == 0:
+                    print("It's a draw!")
+                    continue_playing = False
+                    play_again = input("Do yow want to keep playing? ")
 
-            elif result == 2:
-                print("Dealer won!")
-                continue_playing = False
-            
-            elif result == 3:
-                print(f"Count is {user_sum}. You got busted! You lose.")
-                continue_playing = False
+                elif result == 1:
+                    print("You won!")
+                    continue_playing = False
+                    play_again = input("Do yow want to keep playing? ")
 
-            elif result == 4:
-                print(f"Count is {user_sum}.")
-                continue_playing = input("Do you want another card? ")
+                elif result == 2:
+                    print("Dealer won!")
+                    continue_playing = False
+                    play_again = input("Do yow want to keep playing? ")
+                
+                elif result == 3:
+                    print(f"Count is {user_sum}. You got busted! You lose.")
+                    continue_playing = False
+                    play_again = input("Do yow want to keep playing? ")
 
-    if continue_playing == "n":
-        result = compare_cards()
-        print(result)
+                elif result == 4:
+                    print(f"Count is {user_sum}.")
+                    continue_playing = input("Do you want another card? ")
+
+        if continue_playing == "n":
+            result = compare_cards()
+            print(result)
+            play_again = input("Do yow want to keep playing? ")
 
 else: 
     print("Bye!")
