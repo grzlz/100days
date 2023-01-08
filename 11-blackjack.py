@@ -79,7 +79,7 @@ if greeting == 'y':
 
             if result == 0:
                 print("It's a draw!")
-                continue_playing = "False"
+                continue_playing = False
 
             elif result == 1:
                 print("You won!")
