@@ -4,10 +4,10 @@ from os import system
 from sys import exit
 
 logo = """
- __  _ _  _ __ __ __ ___ ___    __  __  __ __ ___  
-|  \| | || |  V  |  \ __| _ \  / _]/  \|  V  | __| 
-| | ' | \/ | \_/ | -< _|| v / | [/\ /\ | \_/ | _|  
-|_|\__|\__/|_| |_|__/___|_|_\  \__/_||_|_| |_|___| 
+ __ _  _  _  _  _  ____  ____  ____     ___   __   _  _  ____  _   
+(  ( \/ )( \( \/ )(  _ \(  __)(  _ \   / __) / _\ ( \/ )(  __)/ \  
+/    /) \/ (/ \/ \ ) _ ( ) _)  )   /  ( (_ \/    \/ \/ \ ) _) \_/  
+\_)__)\____/\_)(_/(____/(____)(__\_)   \___/\_/\_/\_)(_/(____)(_)                       
 """
 
 
@@ -32,7 +32,6 @@ while valid_option is not True:
 secret_number = randint(1, 100)
 
 right_guess = False
-print(secret_number)
 print(f"You have {lives} lives to guess the secret number.")
 while lives > 0 and right_guess is not True:
     guessed_number = int(input("Take a guess: "))
