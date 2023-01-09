@@ -10,59 +10,43 @@ greeting = input("Welcome! Do you want to play blackjack? ")
 
 def initial_cards():
     user_cards = [choice(cards) for i in range(2)]
-
     return user_cards
 
 def next_card():
     card = choice(cards)
-
     return card
-
-
 
 def check_for_winner(user_sum, dealer_sum):
     if user_sum == 21 and dealer_sum == 21:
         return 0
-
     elif user_sum == 21:
         return 1
-
     elif dealer_sum == 21:
         return 2
-
     elif user_sum > 21:
         return 3
-
     else: 
         return 4
 
 def compare_cards():
     if user_sum == dealer_sum:
         return f"You got {user_sum} and the dealer {dealer_sum}. It's a draw!"
-
     elif user_sum > dealer_sum:
         return f"You got {user_sum} and the dealer {dealer_sum}. You won!"
-
     else:
         return f"You got {user_sum} and the dealer {dealer_sum}. You lose!"
 
 if greeting == 'y':
-
     play_again = "y"
-    
     while play_again == "y":
         system("clear")
-
         user_cards = initial_cards()
         dealer_cards = initial_cards()
-
         print(f"Your cards are {user_cards}\nDealer's first card is {dealer_cards[0]}.")
-
         user_sum = sum(user_cards)
         dealer_sum = sum(dealer_cards)
-
         print(f"Your current count is {user_sum}.")
-
+        
         if user_sum == 21:
             print(f"Your cards are {user_cards}, dealers are {dealer_cards}.\n You scored {user_sum}. You won!")
             continue_playing = False
