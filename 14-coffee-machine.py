@@ -22,21 +22,23 @@ def make_beverage(beverage):
         print(i, resources[i])
     print(f"Here is yout {beverage}!")
     
+
+
 make_beverage(user_input)
-
-
 print(check_resources(user_input))
 
 # Create payment with coins function
 
-#deposit = 0
+def payment(beverage):
+    deposit = 0
+    penny = float(input("How many pennies are you introducing? "))/100
+    nickel = float(input("How many nickels are you introducing?"))/20
+    dime = float(input("How many dimes are you introducing? "))/10
+    quarter = float(input("How many quarters are you introducing? "))/4
+    deposit = penny + nickel + dime + quarter
 
-#penny = float(input("How many pennies are you introducing? "))/100
-#nickel = float(input("How many nickels are you introducing?"))/20
-#dime = float(input("How many dimes are you introducing? "))/10
-#quarter = float(input("How many quarters are you introducing? "))/4
-
-# deposit = penny + nickel + dime + quarter
-
-# print(deposit)
+    if deposit >= MENU[beverage]["cost"]:
+        return True
+    else: 
+        return False
 
