@@ -1,6 +1,6 @@
 from long_file import MENU, resources
 
-user_input = input("What do you want to have? You can pick a espresso, a latte or a cappuccino. ")
+user_input = input("What do you want to have? You can pick a espresso, a latte or a cappuccino:\n")
 
 if user_input == "report":
     for key in resources:
@@ -11,7 +11,6 @@ def check_resources(beverage):
     for i in MENU[beverage]["ingredients"]:
         if resources[i] < MENU[beverage]["ingredients"][i]:
             return False
-
         else:
             return True
 
@@ -25,13 +24,10 @@ def make_beverage(beverage):
     
 make_beverage(user_input)
 
-#    if MENU[beverage]["ingredients"]
-#elif user_input == "espresso":
-#    if MENU["espresso"]["ingredients"]["water"] > resources["water"]
 
 print(check_resources(user_input))
 
-# Create payment with coins feature
+# Create payment with coins function
 
 #deposit = 0
 
