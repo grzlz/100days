@@ -8,14 +8,26 @@ money = MoneyMachine()
 
 # Display options
 # Get a valid user  and save it to a variable named drink
+is_on = True
 valid_drink = False
-while valid_drink is False:
-    user_input = input(f"What yould you like? Options are {menu.get_items()}:\n")
-    beverage = menu.find_drink(user_input)
-    if beverage:
-        valid_drink = True
 
-# If we have enough resources, process payment
-if machine.is_resource_sufficient(beverage):
-    if money.make_payment(beverage.cost):
-        machine.make_coffee(beverage)
+while is_on:
+    user_input = input(f"What yould you like? Options are {menu.get_items()}:\n")
+
+    if user_input == "off":
+        is_on = False
+
+    elif user_input == "report":
+        machine.report()
+        money.report()
+
+    else:
+        while valid_drink is False:
+            beverage = menu.find_drink(user_input)
+            if beverage:
+                valid_drink = True
+                if machine.is_resource_sufficient(beverage):
+                    if money.make_payment(beverage.cost):
+                        machine.make_coffee(beverage)
+            else:
+                break
