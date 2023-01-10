@@ -1,6 +1,8 @@
 from long_file import data
 from random import choice 
 from os import system as sys
+
+# Greet
 print("Welcome to Higher or Lower!")
 
 # Create a function to select randomly an element from data list
@@ -8,16 +10,10 @@ print("Welcome to Higher or Lower!")
 def random_account():
     return choice(data)
 
-# Select two random acounts
-
-
-
 # Create score variable = 0
 score = 0
 
 # Display text showing information about the account owner.
-
-
 
 keep_playing = 'y'
 while keep_playing == 'y':
