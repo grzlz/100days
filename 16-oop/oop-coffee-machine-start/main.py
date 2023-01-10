@@ -6,21 +6,16 @@ machine = CoffeeMaker()
 menu = Menu()
 money = MoneyMachine()
 
-# Display options
-# Get a valid user  and save it to a variable named drink
 is_on = True
-valid_drink = False
-
 while is_on:
-    user_input = input(f"What yould you like? Options are {menu.get_items()}:\n")
-    if user_input == "off":
+    options = menu.get_items()
+    choice = input(f"What would you like? ({options}) ")
+    if choice == "off":
         is_on = False
-    elif user_input == "report":
+    elif choice == "report":
         machine.report()
         money.report()
     else:
-        beverage = menu.find_drink(user_input)
-        if beverage:
-            if machine.is_resource_sufficient(beverage):
-                if money.make_payment(beverage.cost):
-                    machine.make_coffee(beverage)
+        drink = menu.find_drink(choice)
+        if drink is not None and machine.is_resource_sufficient(drink) and money.make_payment(drink.cost):
+            machine.make_coffee(drink)
