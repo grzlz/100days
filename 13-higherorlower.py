@@ -23,7 +23,8 @@ while keep_playing == 'y':
     next_account = random_account()
 
     while game_over is not True:
-        print(f"Who has more followers on Instagram? {first_account['name']}, {first_account['description']} from {first_account['country']} or {next_account['name']}, {next_account['description']} from {next_account['country']}?: ")
+        sys("clear")
+        print(f"Who has more followers on Instagram?\n{first_account['name']}, {first_account['description']} from {first_account['country']} or {next_account['name']}, {next_account['description']} from {next_account['country']}?: ")
 
         answer = input(f"Type 'A' for {first_account['name']} or 'B' for {next_account['name']}: ")
 
@@ -51,5 +52,3 @@ while keep_playing == 'y':
     keep_playing = input("Play again? Type 'y' or 'n': ")
     if keep_playing == "n":
         print("Bye!")
-    sys("clear")
-    
