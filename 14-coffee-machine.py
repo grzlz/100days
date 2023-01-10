@@ -5,9 +5,9 @@ from os import system
 def check_resources(beverage):
     for i in MENU[beverage]["ingredients"]:
         if resources[i] < MENU[beverage]["ingredients"][i]:
+            print(f"Not enough {i}.")
             return False
-        else:
-            return True
+    return True
 
 # Create function to make beverage and take the ingredients used
 def make_beverage(beverage):
@@ -47,7 +47,6 @@ while keep_going:
     elif user_input not in [beverage for beverage in MENU]:
         print("Please enter a valid option.")
     else:
-        check_resources(user_input)
         if check_resources(user_input): 
             if payment(user_input):
                 make_beverage(user_input)
