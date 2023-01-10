@@ -15,16 +15,7 @@ while valid_drink is False:
     if beverage:
         valid_drink = True
 
-# Verify if machine has enough resources to make drink
-
-
-
 # If we have enough resources, process payment
 if machine.is_resource_sufficient(beverage):
     if money.make_payment(beverage.cost):
         machine.make_coffee(beverage)
-
-        
-
-
-
