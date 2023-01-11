@@ -12,4 +12,3 @@ for question in question_data:
 q = QuizBrain(question_bank)
 q.next_question()
 
-print(q.current_question.answer)
