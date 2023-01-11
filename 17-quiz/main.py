@@ -8,5 +8,5 @@ class User:
 user_1 = User("001", "memo")
 print(user_1.username)
 
-user_2 = User("002", "many")
-print(user_2.name)
+user_2 = User("002", "many") 
+print(user_2.username)
