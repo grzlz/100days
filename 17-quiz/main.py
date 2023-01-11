@@ -10,5 +10,6 @@ for question in question_data:
     question_bank.append(Question(question["text"], question["answer"]))
 
 q = QuizBrain(question_bank)
-q.next_question()
 
+while q.still_has_questions():
+    q.next_question()
