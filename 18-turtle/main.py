@@ -1,25 +1,29 @@
 from turtle import Turtle, Screen
+from random import choice, sample
 
 timmy = Turtle()
 timmy.shape("turtle")
 timmy.color("green")
+timmy.pensize(5)
 
-# Draw a pentagon 
-
-figures = [3, 4, 5, 6, 7, 8, 9, 10]
 colors = ["blue", "green", "red", "yellow", "purple", "green", "blue", "red"]
 
+degrees = sample(range(15, 181), 20)
+print(degrees)
 
-for figure in range(len(figures)):
-    timmy.pencolor(colors[figure])
-    for i in range(figures[figure]):
-        timmy.fd(100)
-        timmy.right(360/figures[figure])
+# Generate a random walk function
+def random_walk():
+    left_right = choice(["left", "right"])
+    timmy.pencolor(choice(colors))
+    degree = choice(degrees)
+    if left_right == "left":
+        timmy.left(degree)
+    else:
+        timmy.right(degree)
+    timmy.fd(40)
 
-    
-
-
-
+for i in range(120):
+    random_walk()
 
 screen = Screen()
 screen.exitonclick()
