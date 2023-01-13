@@ -4,12 +4,12 @@ from random import choice, sample
 timmy = Turtle()
 timmy.shape("turtle")
 timmy.color("green")
-timmy.pensize(5)
-
+timmy.pensize(5)    
+timmy.speed("fastest")
 colors = ["blue", "green", "red", "yellow", "purple", "green", "blue", "red"]
 
-degrees = sample(range(15, 181), 20)
-print(degrees)
+degrees = [0, 90, 180, 270]
+
 
 # Generate a random walk function
 def random_walk():
