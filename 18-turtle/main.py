@@ -11,48 +11,34 @@ screen = Screen()
 timmy = Turtle()
 color_list = [(198, 12, 32), (250, 237, 17), (39, 76, 189), (38, 217, 68), (238, 227, 5), (229, 159, 46), (27, 40, 157)]
 
-# Step de 42
-timmy.speed("fastest")
-timmy.setpos(-384, -364.5)
+timmy.pu()
 
-for i in range(10):
-    timmy.begin_fill()
-    timmy.circle(24)
-    timmy.end_fill()
-    timmy.fillcolor(choice(color_list))
-    timmy.fd(85.4)
+timmy.setpos(-384, -300)
+
+def turn_left():
+    timmy.setheading(90)
+    timmy.fd(70)
+    timmy.setheading(180)
+    timmy.forward(80)
+
+def turn_right():
+    timmy.setheading(90)
+    timmy.forward(70)
+    timmy.setheading(0)
+    timmy.fd(80)
 
 
-# Rotate 90 degrees, go 145.8 pixels up, rotate left, go forward 85.4 and finally draw a circle of a 24 radius
-def right_margin():
-    timmy.left(90)
-    timmy.fd(145.8)
-    timmy.left(90)
-    timmy.fd(85.4)
-
+def paint():
     for i in range(10):
-        timmy.begin_fill()
-        timmy.circle(24)
-        timmy.end_fill()
-        timmy.fillcolor(choice(color_list))
-        timmy.fd(85.4)
+        timmy.dot(35, choice(color_list))
+        timmy.fd(80)
 
-def left_margin():
-    timmy.right(90)
-    timmy.forward(72.9)
-    timmy.right(90)
-    timmy.fd(85.4)
 
-    for i in range(10):
-        timmy.begin_fill()
-        timmy.circle(24)
-        timmy.end_fill()
-        timmy.fillcolor(choice(color_list))
-        timmy.fd(85.4)
-
-for i in range(4):
-    right_margin()
-    left_margin()
+for i in range(5):
+    paint()
+    turn_left()
+    paint()
+    turn_right()
 
 
 screen.exitonclick()
