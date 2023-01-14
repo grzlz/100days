@@ -1,29 +1,29 @@
+import turtle as t
 from turtle import Turtle, Screen
-from random import choice, sample
+from random import choice, sample, randint
+
+t.colormode(255)
 
 timmy = Turtle()
-timmy.shape("turtle")
+timmy.shape("classic")
 timmy.color("green")
-timmy.pensize(5)    
 timmy.speed("fastest")
-colors = ["blue", "green", "red", "yellow", "purple", "green", "blue", "red"]
 
-degrees = [0, 90, 180, 270]
+def random_color():
+    r = randint(1, 255)
+    g = randint(1, 255)
+    b = randint(1, 255)
+
+    return((r, g, b))
 
 
-# Generate a random walk function
-def random_walk():
-    left_right = choice(["left", "right"])
-    timmy.pencolor(choice(colors))
-    degree = choice(degrees)
-    if left_right == "left":
-        timmy.left(degree)
-    else:
-        timmy.right(degree)
-    timmy.fd(40)
 
-for i in range(120):
-    random_walk()
+# Draw a circle
+for i in range(72):
+    timmy.color(random_color())
+    timmy.circle(200)
+    timmy.left(5)
+
 
 screen = Screen()
 screen.exitonclick()
