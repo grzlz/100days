@@ -7,15 +7,19 @@ class Animal:
     def breathe(self):
         print("Inhale, exhale.")
 
+    def swim(self):
+        print("Moving in water.")
+
 
 class Fish(Animal):
     def __init__(self):
         super().__init__()
 
-    def swim(self):
-        print("Moving in water.")
+    def breathe(self):
+        super().breathe()
+        print("But underwater.")
 
 
 fish = Fish()
 fish.swim()
-fish.breathe()
+fish.breathe()  
