@@ -1,5 +1,6 @@
 from turtle import Screen, Turtle
 from paddle import Paddle
+from ball import Ball
 from time import sleep
 
 WIDTH = 1000
@@ -7,6 +8,7 @@ HEIGHT = 700
 
 right_paddle = Paddle("right")
 left_paddle = Paddle("left")
+ball = Ball()
 
 screen = Screen() 
 screen.bgcolor("black")
@@ -22,11 +24,7 @@ screen.onkeypress(key="Down", fun=right_paddle.move_down)
 
 # Create the ball and make it move
 
-ball = Turtle()
-ball.shape("circle")
-ball.color("white")
-ball.penup()
-ball.setheading(0)
+
 
 is_game_on = True
 iter = 0
