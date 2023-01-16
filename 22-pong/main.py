@@ -3,6 +3,7 @@ from paddle import Paddle
 from ball import Ball
 from scoreboard import Scoreboard
 from time import sleep
+
 WIDTH = 1000
 HEIGHT = 700
 
@@ -21,9 +22,6 @@ screen.onkeypress(key="s", fun=left_paddle.move_down)
 screen.onkeypress(key="Up", fun=right_paddle.move_up)
 screen.onkeypress(key="Down", fun=right_paddle.move_down)
 
-
-
-
 is_game_on = True
 while is_game_on:
     print(score.left_score)
@@ -34,20 +32,20 @@ while is_game_on:
     if abs(ball.ycor()) > 330:
         ball.bounce()
     # Detect collision with paddle
-    if ball.distance(right_paddle) < 30 or ball.distance(left_paddle) < 30 and abs(ball.xcor()) > 430:
+    if ball.distance(right_paddle) < 30 or ball.distance(left_paddle) < 30 and abs(ball.xcor()) > 445:
         ball.hit()
     # Keep score
     if ball.xcor() < -470:
         score.move_score("right")
         score.announce_point("right")
         sleep(2)
-        ball.goto(0,0)
+        ball.reset_position()
 
     elif ball.xcor() > 470:
         score.move_score("left")
         score.announce_point("left")
         sleep(2)
-        ball.goto(0,0)
+        ball.reset_position()
 
     score.print_score()
 
