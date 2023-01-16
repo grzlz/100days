@@ -31,17 +31,7 @@ iter = 0
 while is_game_on:
     screen.update()
     sleep(0.1)
-
-    if abs(ball.position() - right_paddle.position()) <= 15 or abs(ball.position() - left_paddle.position())<= 15:
-        current_heading = ball.heading()
-        new_heading = 160 - current_heading
-        ball.setheading(new_heading)
-
-    ball.forward(15)
-
-    print(ball.position(), right_paddle.position(), abs(ball.position() - right_paddle.position()))
-
-    iter += 1
+    ball.move()
 
 screen.exitonclick()
 
