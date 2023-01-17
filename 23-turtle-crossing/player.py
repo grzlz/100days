@@ -2,7 +2,7 @@ from turtle import Turtle
 
 STARTING_POSITION = (0, -280)
 MOVE_DISTANCE = 10
-FINISH_LINE_Y = 290
+FINISH_LINE_Y = 280
 
 
 class Player(Turtle):
@@ -13,18 +13,20 @@ class Player(Turtle):
         self.penup()
         self.goto(STARTING_POSITION)
         self.setheading(90)
-        self.win_condition = False
+
 
     def move(self):
-        if self.ycor() < FINISH_LINE_Y:
-            self.forward(MOVE_DISTANCE)
-
-        else:
-            self.win_condition = True
-            print(self.ycor())
-
+        self.forward(MOVE_DISTANCE)
+        
     def move_bd(self):
         self.forward(-MOVE_DISTANCE)
+
+    def is_at_finish_line(self):
+        return self.ycor() == FINISH_LINE_Y
+
+    def go_to_start(self):
+        self.goto(STARTING_POSITION)
+        
         
 
 
