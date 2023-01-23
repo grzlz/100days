@@ -28,7 +28,14 @@ data = pd.read_csv("weather_data.csv")
 # print(data.condition)
 
 # Get data in rows
-print(data[data["temp"] == data["temp"].max()])
+# print(data[data["temp"] == data["temp"].max()])
+
+# Convert monday's temperature to farenheit
+# Get monday's temperature
+print(data[data.day == "Monday"].temp * 9/5 + 32)
+
+
+
 
 
 
