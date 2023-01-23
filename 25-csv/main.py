@@ -24,6 +24,8 @@ temp_list = data["temp"].to_list()
 mean_temp = mean(temp_list)
 
 print(round(mean_temp, 2))
+print(data["temp"].mean())
+print(data["temp"].max())
 
 
 
