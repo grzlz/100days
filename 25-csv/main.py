@@ -15,24 +15,20 @@
 #    print(temperatures)
 
 import pandas as pd
-from statistics import mean
+# from statistics import mean
 data = pd.read_csv("weather_data.csv")
 
 # Convert temp series to list and find the mean temp
 
-temp_list = data["temp"].to_list()
-mean_temp = mean(temp_list)
+#temp_list = data["temp"].to_list()
+#mean_temp = mean(temp_list)
 
 # Get data in columns
-print(data["condition"])
-print(data.condition)
+#print(data["condition"])
+# print(data.condition)
 
-
-
-
-
-
-
+# Get data in rows
+print(data[data["temp"] == data["temp"].max()])
 
 
 
