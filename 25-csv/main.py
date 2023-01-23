@@ -29,5 +29,5 @@ while number_states > 0:
         writer.write(answer)
         number_states -= 1
 
-
-screen.exitonclick()
+    if answer == "Exit":
+        break
