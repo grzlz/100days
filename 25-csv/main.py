@@ -25,8 +25,8 @@ while number_states > 0:
 
     if answer in data["state"].values:
         
-        cords = data[data["state"] == answer][["x", "y"]]
-        writer.goto(cords.iloc[0]["x"], cords.iloc[0]["y"])
+        cords = data[data["state"] == answer]
+        writer.goto(int(cords.x), int(cords.y))
         writer.write(answer)
         number_states -= 1
 
