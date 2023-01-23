@@ -20,8 +20,7 @@ number_states = len(data.index)
 
 while number_states > 0:
 
-    answer =  screen.textinput(title="Guess the State", prompt=f"{number_states} states remaining. What's another state's name?")
-    answer = answer.capitalize()
+    answer =  screen.textinput(title="Guess the State", prompt=f"{number_states} states remaining. What's another state's name?").title()
 
     if answer in data["state"].values:
         
