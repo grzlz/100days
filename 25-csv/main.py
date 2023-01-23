@@ -15,12 +15,15 @@
 #    print(temperatures)
 
 import pandas as pd
-
+from statistics import mean
 data = pd.read_csv("weather_data.csv")
-# print(data["temp"])
-data_dict = data.to_dict()
-print(data_dict)
 
+# Convert temp series to list and find the mean temp
+
+temp_list = data["temp"].to_list()
+mean_temp = mean(temp_list)
+
+print(round(mean_temp, 2))
 
 
 
