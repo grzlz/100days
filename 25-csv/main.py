@@ -32,15 +32,16 @@ data = pd.read_csv("weather_data.csv")
 
 # Convert monday's temperature to farenheit
 # Get monday's temperature
-print(data[data.day == "Monday"].temp * 9/5 + 32)
+# print(data[data.day == "Monday"].temp * 9/5 + 32)
 
+# Create data frame from scratch
+data_dict = {
+    "studens": ["Amy", "James", "Angela"],
+    "scores": [76, 56, 65]
+}
 
-
-
-
-
-
-
+data = pd.DataFrame(data_dict)
+print(data)
 
 
 
