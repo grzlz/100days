@@ -14,9 +14,9 @@
 #            temperatures.append(int(row[1]))
 #    print(temperatures)
 
-import pandas as pd
+# import pandas as pd
 # from statistics import mean
-data = pd.read_csv("weather_data.csv")
+# data = pd.read_csv("weather_data.csv")
 
 # Convert temp series to list and find the mean temp
 
@@ -35,15 +35,16 @@ data = pd.read_csv("weather_data.csv")
 # print(data[data.day == "Monday"].temp * 9/5 + 32)
 
 # Create data frame from scratch
-data_dict = {
-    "studens": ["Amy", "James", "Angela"],
-    "scores": [76, 56, 65]
-}
+# data_dict = {
+#    "studens": ["Amy", "James", "Angela"],
+#    "scores": [76, 56, 65]
+# }
 
-data = pd.DataFrame(data_dict)
-print(data)
+# data = pd.DataFrame(data_dict)
+# print(data)
+import pandas as pd
 
+data = pd.read_csv("squirrels.csv")
 
-
-
+print(data.groupby(["Primary Fur Color"])["Primary Fur Color"].count().to_csv("squirrels_colors.csv"))
 
