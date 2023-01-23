@@ -23,9 +23,9 @@ data = pd.read_csv("weather_data.csv")
 temp_list = data["temp"].to_list()
 mean_temp = mean(temp_list)
 
-print(round(mean_temp, 2))
-print(data["temp"].mean())
-print(data["temp"].max())
+# Get data in columns
+print(data["condition"])
+print(data.condition)
 
 
 
