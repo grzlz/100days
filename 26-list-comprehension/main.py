@@ -1,6 +1,6 @@
 #list comprehensions
 
-numbers = [1, 2, 3, 4]
+names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Freddie"]
 
-new_numbers = [number * 2 for number in range(1,5)]
-print(new_numbers)
+names_upper = [name.upper() for name in names if len(name) < 5]
+print(names_upper)
