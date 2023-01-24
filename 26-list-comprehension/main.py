@@ -1,5 +1,10 @@
-# Exercise 1
-sentence = "What is the Airspeed Veolcity of an Unladen Swallow?"
+import pandas as pd
+# NATO exercise
 
-strike1 = {word: len(word) for word in sentence.split()}
-print(strike1)
+d = pd.read_csv("nato_phonetic_alphabet.csv")
+nato_dict = {row.letter:row.code for (index, row) in d.iterrows()}
+
+word = input("What word do you wish to NATOfy? ")
+
+answer = [nato_dict.get(i.upper()) for i in word]
+print(answer)
