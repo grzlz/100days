@@ -28,38 +28,4 @@ km_label.grid(column=4, row=3)
 button = Button(text="Convert", command=button_click)
 button.grid(column=3, row=4)
 
-# Create miles to km converter
-
-# Create initial label
-# Create  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.mainloop()
