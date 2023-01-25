@@ -1,7 +1,7 @@
 from tkinter import * 
 
 def button_click():
-    km = int(input.get()) * 1.6
+    km = round(int(input.get()) * 1.6, 2)
     km_output.config(text=km)
 
 window = Tk()
