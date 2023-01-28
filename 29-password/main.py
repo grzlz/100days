@@ -1,15 +1,42 @@
 from tkinter import *
+from tkinter import messagebox
+from random import choice, randint, shuffle
+
+lower_case_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+constants = {
+    "capital_letters": [letter.upper() for letter in lower_case_letters],
+    "lower_case_letters": lower_case_letters,
+    "symbols": ["!", "#", "$", "%", "&", "/", "(", ")", "=", "?", "¡"]
+}
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generate_password():
+    upper_case_characters = [choice(constants.get("capital_letters")) for i in range(4)]
+    lower_case_characters = [choice(constants.get("lower_case_letters")) for i in range(4)]
+    symbol_characters = [choice(constants.get("symbols")) for i in range(4)]
+    password = upper_case_characters + lower_case_characters + symbol_characters
+    shuffle(password)
+
+    return "".join(password)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
+
+    messagebox.askokcancel(title=website, message=f"These are the details entered:\nusername: {username}\npassword: {password}\nIs it okay to save?")
+
     with open("data.txt", "a") as file:
-        file.write(f"{website}-{username}-{password}\n")
+        file.write(f"{website} | {username} | {password}\n")
 
+    website_input.delete(0, END)
+    username_input.delete(0, END)
+    password_input.delete(0, END)
 
+    website_input.focus()
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -43,7 +70,7 @@ password_input = Entry(width=21)
 password_input.grid(column=1, row=3, sticky=EW)
 
 # Buttons
-generate_password_button = Button(text="Generate password") 
+generate_password_button = Button(text="Generate password", command=generate_password) 
 generate_password_button.grid(column=2, row=3, sticky=EW)
 
 add_button = Button(text="Add", width=36, command=save_password)
