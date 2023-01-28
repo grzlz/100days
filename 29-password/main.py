@@ -13,9 +13,9 @@ constants = {
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     password_input.delete(0, END)
-    upper_case_characters = [choice(constants.get("capital_letters")) for i in range(4)]
-    lower_case_characters = [choice(constants.get("lower_case_letters")) for i in range(4)]
-    symbol_characters = [choice(constants.get("symbols")) for i in range(4)]
+    upper_case_characters = [choice(constants.get("capital_letters")) for i in range(randint(4, 6))]
+    lower_case_characters = [choice(constants.get("lower_case_letters")) for i in range(randint(6, 8))]
+    symbol_characters = [choice(constants.get("symbols")) for i in range(randint(3,5))]
     password = upper_case_characters + lower_case_characters + symbol_characters
     shuffle(password)
 
