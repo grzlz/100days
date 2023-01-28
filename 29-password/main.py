@@ -12,25 +12,30 @@ constants = {
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
+    password_input.delete(0, END)
     upper_case_characters = [choice(constants.get("capital_letters")) for i in range(4)]
     lower_case_characters = [choice(constants.get("lower_case_letters")) for i in range(4)]
     symbol_characters = [choice(constants.get("symbols")) for i in range(4)]
     password = upper_case_characters + lower_case_characters + symbol_characters
     shuffle(password)
 
-    return "".join(password)
-
-
+    password_input.insert(0, "".join(password))
+    
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
 
-    messagebox.askokcancel(title=website, message=f"These are the details entered:\nusername: {username}\npassword: {password}\nIs it okay to save?")
+    if len(website) == 0 or len(username) == 0 or len(password) == 0:
+        return messagebox.showwarning(title="Incomplete information", message="Please don't leave any empty fields.")
 
-    with open("data.txt", "a") as file:
-        file.write(f"{website} | {username} | {password}\n")
+
+    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered:\nusername: {username}\npassword: {password}\nIs it okay to save?")
+
+    if is_ok:
+        with open("data.txt", "a") as file:
+            file.write(f"{website} | {username} | {password}\n")
 
     website_input.delete(0, END)
     username_input.delete(0, END)
