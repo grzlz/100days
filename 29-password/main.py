@@ -20,7 +20,7 @@ def generate_password():
     shuffle(password)
 
     password_input.insert(0, "".join(password))
-    
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     website = website_input.get()
@@ -29,10 +29,7 @@ def save_password():
 
     if len(website) == 0 or len(username) == 0 or len(password) == 0:
         return messagebox.showwarning(title="Incomplete information", message="Please don't leave any empty fields.")
-
-
     is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered:\nusername: {username}\npassword: {password}\nIs it okay to save?")
-
     if is_ok:
         with open("data.txt", "a") as file:
             file.write(f"{website} | {username} | {password}\n")
