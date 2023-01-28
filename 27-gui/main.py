@@ -6,12 +6,12 @@ def button_click():
 
 window = Tk()
 window.title("My first GUI Program")
-window.minsize(width=500, height=300)
+window.minsize(width=300, height=100)
 window.config(padx=20, pady=20)
 
 # Inital label
 my_label = Label(text="Miles to km converter", font=("Arial", 18, "bold"))
-my_label.grid(column=0, row=0)
+my_label.grid(column=2, row=0, columnspan=3)
 # Entry
 input = Entry(width=10)
 input.grid(column=3, row=2)
