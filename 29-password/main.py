@@ -59,6 +59,27 @@ def save_password():
 
     website_input.focus()
 
+# Search password function
+
+def search_password():
+    site = website_input.get()
+    try: 
+        with open("data.json") as file:
+            data = json.load(file)
+            username = data[site]["username"]
+            password = data[site]["password"]
+        
+        messagebox.showinfo(title=f"Password request for {site}", message=f"username: {username}\npassword: {password}")
+
+
+    except FileNotFoundError:
+        #Alert message
+        print("File not exist.")
+
+    except KeyError as error_message:
+        messagebox.showerror(title="Bad request", message=f"{error_message} is not in database.")
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password manager")
@@ -81,7 +102,7 @@ password_label.grid(column=0, row=3)
 
 # Inputs
 website_input = Entry(width=35)
-website_input.grid(column=1, row=1, columnspan=2, sticky=EW)
+website_input.grid(column=1, row=1, sticky=EW)
 website_input.focus()
 
 username_input = Entry(width=35)
@@ -91,6 +112,9 @@ password_input = Entry(width=21)
 password_input.grid(column=1, row=3, sticky=EW)
 
 # Buttons
+search_password_button = Button(text="Search", command=search_password)
+search_password_button.grid(column=2, row=1, sticky=EW)
+
 generate_password_button = Button(text="Generate password", command=generate_password) 
 generate_password_button.grid(column=2, row=3, sticky=EW)
 
