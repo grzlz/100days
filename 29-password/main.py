@@ -74,7 +74,7 @@ def search_password():
 
     except FileNotFoundError:
         #Alert message
-        print("File not exist.")
+        messagebox.showerror(title="Bad request", message="File does not exist.")
 
     except KeyError as error_message:
         messagebox.showerror(title="Bad request", message=f"{error_message} is not in database.")
