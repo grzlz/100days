@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
+import json
 
 lower_case_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
@@ -26,17 +27,35 @@ def save_password():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
+    new_data = {
+        website: {
+            "username": username,
+            "password": password
+        }
+    }
 
     if len(website) == 0 or len(username) == 0 or len(password) == 0:
         return messagebox.showwarning(title="Incomplete information", message="Please don't leave any empty fields.")
-    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered:\nusername: {username}\npassword: {password}\nIs it okay to save?")
-    if is_ok:
-        with open("data.txt", "a") as file:
-            file.write(f"{website} | {username} | {password}\n")
 
-    website_input.delete(0, END)
-    username_input.delete(0, END)
-    password_input.delete(0, END)
+    else:
+        try:
+            with open("data.json", "r") as file:
+                # print(data)
+                data = json.load(file)
+                data.update(new_data)
+        
+        except FileNotFoundError:
+            with open("data.json", "w") as file:
+                json.dump(new_data, file, indent=4)
+
+        else:
+            with open("data.json", "w") as file:
+                json.dump(data, file, indent=4)
+
+        finally:
+            website_input.delete(0, END)
+            username_input.delete(0, END)
+            password_input.delete(0, END)
 
     website_input.focus()
 
