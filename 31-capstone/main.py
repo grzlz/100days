@@ -14,16 +14,16 @@ back_canvas = PhotoImage(file="images/card_back.png")
 
 canvas.create_image(400, 260, image=back_canvas)
 canvas.create_image(400, 260, image=front_canvas)
-title_text = canvas.create_text(400, 170 , text="Title", fill="black", font=("Courier", 20))
-word_text = canvas.create_text(400, 260 , text="Word", fill="black", font=("Courier", 25, "bold"))
-canvas.grid(column=1, row=0)
+title_text = canvas.create_text(400, 150 , text="Title", fill="black", font=("Ariel", 40, "italic"))
+word_text = canvas.create_text(400, 260 , text="Word", fill="black", font=("Ariel", 60, "bold"))
+canvas.grid(column=0, row=0, columnspan=2)
 
 
 # Buttons
 right_button = Button(image=rigt_img)
 wrong_button = Button(image=wrong_img)
 
-right_button.grid(column=2, row=2)
+right_button.grid(column=1, row=2)
 wrong_button.grid(column=0, row=2)
 
 
