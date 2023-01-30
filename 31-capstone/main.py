@@ -16,16 +16,8 @@ canvas.create_image(400, 260, image=back_canvas)
 canvas.create_image(400, 260, image=front_canvas)
 title_text = canvas.create_text(400, 170 , text="Title", fill="black", font=("Courier", 20))
 word_text = canvas.create_text(400, 260 , text="Word", fill="black", font=("Courier", 25, "bold"))
-
-
 canvas.grid(column=1, row=0)
 
-# Text
-title_label = Label(text="Title")
-word_label = Label(text="Word")
-
-title_label.grid(column=1, row=1)
-word_label.grid(column=1, row=2)
 
 # Buttons
 right_button = Button(image=rigt_img)
