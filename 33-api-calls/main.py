@@ -1,4 +1,4 @@
 import requests
 
-response = requests.get(url="http://api.open-notify.org/iss-now.json")
-print(response.json().get("iss_position"))
+response = requests.get(url="https://api.kanye.rest/")
+print(response.json().get("quote"))
