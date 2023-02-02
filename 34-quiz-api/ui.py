@@ -20,8 +20,8 @@ class QuizInterface:
         self.score_label.grid(column=1, row=0)
         
         # Create buttons
-        self.true_button = Button(image=true_img)
-        self.false_button = Button(image=false_img)
+        self.true_button = Button(image=true_img, command=self.clicked_true)
+        self.false_button = Button(image=false_img, command=self.clicked_false)
 
         self.true_button.grid(column=0, row=2)
         self.false_button.grid(column=1, row=2)
@@ -30,6 +30,28 @@ class QuizInterface:
         
         self.window.mainloop()
 
+    def clicked_true(self):
+        is_right = self.quiz.check_answer("True")
+        self.give_feedback(is_right)
+
+    def clicked_false(self):
+        self.give_feedback(self.quiz.check_answer("False"))
+
     def get_next_question(self):
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=q_text)
+        self.canvas.config(bg="white")
+        if self.quiz.still_has_questions():    
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=q_text)
+
+        else:
+            self.canvas.itemconfig(self.question_text, text="No more questions.")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
+
+    def give_feedback(self, is_right):
+        if is_right:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+
+        self.window.after(1000, self.get_next_question)
