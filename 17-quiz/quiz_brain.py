@@ -4,7 +4,6 @@ class QuizBrain:
         self.score = 0
         self.question_list = question_list
     
-
     def still_has_questions(self):
         return self.question_number < len(self.question_list)
 
