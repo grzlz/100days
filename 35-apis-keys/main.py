@@ -13,5 +13,19 @@ parameters = {
     "appid": api_key
 }
 
-next48 = requests.get("https://api.openweathermap.org/data/2.5/onecall", params = parameters)
-print(next48.json())
+data = requests.get("https://api.openweathermap.org/data/2.5/onecall", params = parameters)
+
+hours = data.json()["hourly"]
+
+climate_id = [hour["weather"][0]["id"] for hour in hours ][:12]
+print(climate_id)
+
+
+# If id < 700 birng umbrella
+for i in climate_id:
+    if i < 700:
+        print("Rainy day")
+
+
+
+
