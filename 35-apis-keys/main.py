@@ -26,10 +26,6 @@ for i in climate_id:
         rainy_day = "rainy day"
         break
 
-
-
-
-
 if raining:
     # Send text message
     client = Client(account_sid, auth_token)
