@@ -1,30 +1,43 @@
 import requests 
+from twilio.rest import Client
 
-# api_key = "69f04e4613056b159c2761a9d9e664d2"
+# Twilio setup
+account_sid = "AC81f2671430dc9505aaed34057ce8f306"
+auth_token = "c9bb14ca91070852e2556e71eac6206d"
+
+# Openweather setup
 api_key = "b239ad6816f4e09d41069588e7ac2d80"
-
-# Get Hourly forecast for 48 hours from https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-# api_key = "a843491b794fffdf8d6796331a8b6cb1"
-
 parameters = {
     "lat": 21.1743,
     "lon": -86.8466,
     "exclude": "current,minutely,daily",
     "appid": api_key
 }
-
 data = requests.get("https://api.openweathermap.org/data/2.5/onecall", params = parameters)
-
 hours = data.json()["hourly"]
-
 climate_id = [hour["weather"][0]["id"] for hour in hours ][:12]
-print(climate_id)
 
 
 # If id < 700 birng umbrella
+raining = False
 for i in climate_id:
     if i < 700:
-        print("Rainy day")
+        raining = True
+        rainy_day = "rainy day"
+        break
+
+
+
+
+
+if raining:
+    # Send text message
+    client = Client(account_sid, auth_token)
+    message = client.messages.create(
+                                body=f"Remember it's a {rainy_day}.",
+                                from_='+14303051259',
+                                to='+525548017016'
+                            )
 
 
 
