@@ -3,6 +3,7 @@ import requests
 STOCK = "TSLA"
 API_KEY = "0C4YOOGX1QICQWUY"
 COMPANY_NAME = "Tesla Inc"
+NEWS_API_KEY = "24ea1829785644adb7527b85b7e532ed"
 
 ## STEP 1: Use https://www.alphavantage.co
 url_params = {
@@ -10,7 +11,7 @@ url_params = {
     "symbol": STOCK,
     "interval": "60min",
     "apikey": API_KEY
-}
+    }
 url = "https://www.alphavantage.co/query"
 r = requests.get(url, params = url_params)
 data = r.json()["Time Series (60min)"]
@@ -19,21 +20,35 @@ last_48hours_data = {key: data[key] for key in list(data)[:33]}
 closes = {
     "yesterday_close": last_48hours_data[list(last_48hours_data)[0]].get("4. close"),
     "day_before_yesterday_close": last_48hours_data[list(last_48hours_data)[16]].get("4. close")
-}
+    }
 
-# When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
+news_url_params = {
+    "q": COMPANY_NAME,
+    "apiKey": NEWS_API_KEY,
+    "language": "en",
+    "sortBy": "relevancy"
+    }
+news_url = "https://newsapi.org/v2/everything"
+
+def get_news():
+    news_r = requests.get(news_url, params=news_url_params)
+    latest_three_news = news_r.json()["articles"][:3]
+    return [headline["title"] for headline in latest_three_news]
+
 def stock_gazer(data):
     print(float(data["yesterday_close"]))
     print(float(data["day_before_yesterday_close"]))
     percentage = (float(data["yesterday_close"])/float(data["day_before_yesterday_close"]) - 1) 
-    if abs(percentage) >  .05:
-        print("Va jalando")
+    if abs(percentage) >  0:
+        print(get_news())
 
-stock_gazer(closes)
-
+stock_gazer(closes) 
 
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
+
+
+
 
 ## STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title and description to your phone number. 
