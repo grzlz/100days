@@ -26,8 +26,7 @@ def stock_gazer(data):
     print(float(data["yesterday_close"]))
     print(float(data["day_before_yesterday_close"]))
     percentage = (float(data["yesterday_close"])/float(data["day_before_yesterday_close"]) - 1) 
-    if abs(percentage) >  .06:
-        print(percentage)
+    if abs(percentage) >  .05:
         print("Va jalando")
 
 stock_gazer(closes)
