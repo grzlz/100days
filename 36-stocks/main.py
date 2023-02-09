@@ -42,7 +42,7 @@ def get_news():
 
 def stock_gazer(data):
     percentage = (float(data["yesterday_close"])/float(data["day_before_yesterday_close"]) - 1) 
-    if abs(percentage) >  0:
+    if abs(percentage) > 0.05:
         headlines = get_news()
         client = Client(account_sid, auth_token)
         message = client.messages.create(body=f"Change of {round(percentage * 100, 2)}%. Here the relevant news:\n{headlines[0]}\n{headlines[1]}\n{headlines[2]}",
