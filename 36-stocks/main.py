@@ -1,9 +1,14 @@
 import requests
+from twilio.rest import Client
 
 STOCK = "TSLA"
 API_KEY = "0C4YOOGX1QICQWUY"
 COMPANY_NAME = "Tesla Inc"
 NEWS_API_KEY = "24ea1829785644adb7527b85b7e532ed"
+account_sid = "AC81f2671430dc9505aaed34057ce8f306"
+auth_token = "c9bb14ca91070852e2556e71eac6206d"
+
+
 
 ## STEP 1: Use https://www.alphavantage.co
 url_params = {
@@ -36,11 +41,14 @@ def get_news():
     return [headline["title"] for headline in latest_three_news]
 
 def stock_gazer(data):
-    print(float(data["yesterday_close"]))
-    print(float(data["day_before_yesterday_close"]))
     percentage = (float(data["yesterday_close"])/float(data["day_before_yesterday_close"]) - 1) 
     if abs(percentage) >  0:
-        print(get_news())
+        headlines = get_news()
+        client = Client(account_sid, auth_token)
+        message = client.messages.create(body=f"Change of {percentage * 100}%. Here the relevant news:\n{headlines[0]}\n{headlines[1]}\n{headlines[2]}",
+                            from_='+14303051259',
+                            to='+525548017016')
+
 
 stock_gazer(closes) 
 
