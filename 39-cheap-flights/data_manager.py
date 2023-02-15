@@ -9,5 +9,15 @@ class DataManager:
         data = data.json()["prices"]
         return data
     
+    def upload_data(self, data):
+        for row in data:
+            new_row = {
+                "price": {
+                    "iataCode": row["iataCode"]
+                }
+            }
+            r = requests.put(f"{self.url}/{row['id']}", json=new_row)
+            print(r.json())
+    
     #This class is responsible for talking to the Google Sheet.
     pass

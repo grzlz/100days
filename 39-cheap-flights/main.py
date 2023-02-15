@@ -1,6 +1,11 @@
 #This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
 from data_manager import DataManager
+from flight_search import FlightSearch
 
 dm = DataManager()
+fs = FlightSearch()
 sheet_data = dm.get_data()
-print(sheet_data)
+
+fs.get_code(sheet_data)
+
+dm.upload_data(sheet_data)
