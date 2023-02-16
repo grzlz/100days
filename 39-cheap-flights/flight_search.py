@@ -5,11 +5,9 @@ class FlightSearch:
     def get_code(self, data):
         for i in data:
             if i["iataCode"] == "":
-
                 i["iataCode"] = self.fetch_code(i["city"])
 
     def fetch_code(self, city):
-
         url = "https://api.tequila.kiwi.com/locations/query"
         params = {
             "term": city,
