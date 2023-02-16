@@ -4,8 +4,7 @@ from flight_search import FlightSearch
 
 dm = DataManager()
 fs = FlightSearch()
+
 sheet_data = dm.get_data()
-
 fs.get_code(sheet_data)
-
 dm.upload_data(sheet_data)
