@@ -51,3 +51,5 @@ class FlightSearch:
         for destination in data:
             print(destination["city"], self.get_price(destination["iataCode"]))
 
+            # TO DO 
+
