@@ -19,5 +19,4 @@ class DataManager:
             r = requests.put(f"{self.url}/{row['id']}", json=new_row)
             print(r.json())
     
-    #This class is responsible for talking to the Google Sheet.
-    pass
+    
