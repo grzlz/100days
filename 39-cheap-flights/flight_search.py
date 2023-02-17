@@ -47,4 +47,7 @@ class FlightSearch:
 
         return lowest_price
     
-    
+    def get_prices(self, data):
+        for destination in data:
+            print(destination["city"], self.get_price(destination["iataCode"]))
+

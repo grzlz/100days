@@ -6,5 +6,6 @@ dm = DataManager()
 fs = FlightSearch()
 
 sheet_data = dm.get_data()
-fs.get_code(sheet_data)
-dm.upload_data(sheet_data)
+# fs.get_code(sheet_data)
+# dm.upload_data(sheet_data)
+fs.get_prices(sheet_data)
