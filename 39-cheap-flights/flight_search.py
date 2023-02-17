@@ -32,7 +32,8 @@ class FlightSearch:
             "date_to": "20/05/2023",
             "return_from": "10/08/2023",
             "return_to": "15/08/2023",
-            "adults": 1
+            "adults": 1,
+            "curr": "MXN"
         }
 
         headers = {
@@ -45,3 +46,5 @@ class FlightSearch:
         lowest_price = r["data"][0]["price"]
 
         return lowest_price
+    
+    
