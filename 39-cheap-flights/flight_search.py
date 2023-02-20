@@ -1,4 +1,9 @@
 import requests 
+from twilio.rest import Client
+
+account_sid = "AC81f2671430dc9505aaed34057ce8f306"
+auth_token = "f294e23376f119d371252473411de6e9"
+
 
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
@@ -24,7 +29,7 @@ class FlightSearch:
 
         return iata_code
     
-    def get_price(self, destination):
+    def get_flight_data(self, destination):
         params = {
             "fly_from": "CUN",
             "fly_to": destination,
@@ -43,13 +48,32 @@ class FlightSearch:
         url = "https://api.tequila.kiwi.com/v2/search"
 
         r = requests.get(url, params=params, headers=headers).json()
-        lowest_price = r["data"][0]["price"]
+        r = r["data"][0]
+        flight_data = {key: r[key] for key in r if key in ["price", "local_departure"]}
 
-        return lowest_price
+        return flight_data
     
-    def get_prices(self, data):
+    def find_deal(self, data):
         for destination in data:
-            print(destination["city"], self.get_price(destination["iataCode"]))
+            threshold = destination["lowestPrice"]
+            destination_code = destination["iataCode"]
+            flight_data = self.get_flight_data(destination_code)
+            if threshold <= flight_data["price"]:
+                message_data = {
+                    "city": data["city"],
+                    "price": flight_data["price"],
+                    "departure": flight_data["local_departure"]
+                    }
+                self.send_notification(message_data)
+
+    def send_notification(self, data):
+        # SEND TWILIO MESSAGE
+        body = f"Found a great flight deal to {data["city"]} for only {data["price"]} leaving on {data["departure"]}"
+        client = Client(account_sid, auth_token)
+        message = client.messages.create(body=body,
+                            from_='+14303051259',
+                            to='+525548017016')
+
 
             # TO DO 
 
