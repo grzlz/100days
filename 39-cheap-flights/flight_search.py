@@ -40,13 +40,10 @@ class FlightSearch:
             "adults": 1,
             "curr": "MXN"
         }
-
         headers = {
             "apiKey": "MtYDAqQ8v5jzNh6vBSAt5gZbaVuTnDwW"
         }
-
         url = "https://api.tequila.kiwi.com/v2/search"
-
         r = requests.get(url, params=params, headers=headers).json()
         r = r["data"][0]
         flight_data = {key: r[key] for key in r if key in ["price", "local_departure"]}
@@ -68,12 +65,8 @@ class FlightSearch:
                 self.send_notification(message_data)
 
     def send_notification(self, data):
-        # SEND TWILIO MESSAGE
         body = f"Found a great flight deal to {data['city']} for only {data['price']} leaving on {data['departure']}"
         client = Client(account_sid, auth_token)
         message = client.messages.create(body=body,
                             from_='+14303051259',
                             to='+525548017016')
-
-
-# TO DO
