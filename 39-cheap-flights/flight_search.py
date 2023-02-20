@@ -68,7 +68,7 @@ class FlightSearch:
 
     def send_notification(self, data):
         # SEND TWILIO MESSAGE
-        body = f"Found a great flight deal to {data["city"]} for only {data["price"]} leaving on {data["departure"]}"
+        body = f"Found a great flight deal to {data['city']} for only {data['price']} leaving on {data['departure']}"
         client = Client(account_sid, auth_token)
         message = client.messages.create(body=body,
                             from_='+14303051259',

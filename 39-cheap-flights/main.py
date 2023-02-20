@@ -9,5 +9,3 @@ sheet_data = dm.get_data()
 # fs.get_code(sheet_data)
 # dm.upload_data(sheet_data)
 fs.find_deal(sheet_data)
-# Queda guardar para qué ciudad hay un vuelo más barato que el establecido
-# Y también enviar un mensaje de texto cuando encontremos un vuelo barato
