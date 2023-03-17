@@ -1,5 +1,12 @@
+body {
+    margin: 0;
+    text-align: center;
+}
+
 .top-container {
     background-color: beige;
+    position: relative;
+    padding-top: 100px;
 }
 
 .middle-container {
@@ -18,12 +25,19 @@
     top:758px;
 }
 
-body {
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-}
 
 h1 {
     margin-top: 0px;
+}
+
+.top-cloud {
+    position: absolute;
+    right: 300px;
+    top: 50px;
+}
+
+.bottom-cloud {
+    position: absolute;
+    left: 300px;
+    bottom: 300px;
 }
