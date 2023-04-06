@@ -55,6 +55,7 @@ h2 {
 
 .profile-image {
     width: 25%;
+    border-radius: 50%;
 }
 
 .top-cloud {
