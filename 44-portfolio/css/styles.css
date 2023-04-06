@@ -11,19 +11,9 @@ body {
 }
 
 .middle-container {
-    height: 200px;
-    width: 200px;
-    background-color: blueviolet;
-    position: absolute;
 }
 
 .bottom-container {
-    height: 200px;
-    width: 200px;
-    background-color: red;
-    position: absolute;
-    left:200px;
-    top:758px;
 }
 
 h1 {
