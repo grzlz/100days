@@ -1,4 +1,46 @@
 from bs4 import BeautifulSoup
+import requests 
+
+response = requests.get("https://news.ycombinator.com/news")
+contents = response.text
+
+soup = BeautifulSoup(contents, "html.parser")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """ with open("website.html") as file:
