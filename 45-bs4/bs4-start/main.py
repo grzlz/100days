@@ -23,6 +23,7 @@ all_links = [a_tag.get("href") for a_tag in all_a_tags]
 section_heading = soup.find(name="h3", class_="heading")
 print(section_heading)
 
-
-
+# You can also use css selectors to get tags, but I think I'll skip that part
+# Select by class
+heading = soup.select(".heading")
 
