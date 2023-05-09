@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 
-with open("website.html") as file:
+
+""" with open("website.html") as file:
     content = file.read()
 
 soup = BeautifulSoup(content, "html.parser")
@@ -27,3 +28,4 @@ print(section_heading)
 # Select by class
 heading = soup.select(".heading")
 
+ """
