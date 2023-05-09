@@ -15,11 +15,13 @@ all_p_text = [p.text for p in all_p_tags]
 print(all_p_text)
 
 # Get all hrefs (links) from anchor tags
-
 all_a_tags = soup.find_all(name = "a")
 all_links = [a_tag.get("href") for a_tag in all_a_tags]
 print(all_links)
 
+# Find tags by class 
+section_heading = soup.find(name="h3", class_="heading")
+print(section_heading)
 
 
 
