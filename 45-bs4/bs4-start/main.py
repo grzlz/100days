@@ -7,11 +7,17 @@ contents = response.text
 soup = BeautifulSoup(contents, "html.parser")
 
 # Get text of all articles
-all_a_tags = soup.find_all(class_ = "score")
+all_a_tags = soup.find_all(class_ = "titleline")
 
-all_titles = [tag.text for tag in all_a_tags]
+titles = [tag.text for tag in all_a_tags]
+links = [tag.find("a")["href"] for tag in all_a_tags]
+upvotes = [tag.text for tag in soup.find_all(class_ = "score")]
 
-print(all_titles)
+# Transform upvotes to numeric upvotes 
+numeric_upvotes = [int(vote.split()[0]) for vote in upvotes]
+
+
+print(numeric_upvotes)
 
 
 
