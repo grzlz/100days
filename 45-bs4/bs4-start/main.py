@@ -7,7 +7,7 @@ contents = response.text
 soup = BeautifulSoup(contents, "html.parser")
 
 # Get text of all articles
-all_a_tags = soup.find_all(class_ = "titleline")
+all_a_tags = soup.find_all(class_ = "score")
 
 all_titles = [tag.text for tag in all_a_tags]
 
