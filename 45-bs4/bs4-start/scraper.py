@@ -8,9 +8,12 @@ soup = BeautifulSoup(site, "html.parser")
 
 movie_tags = soup.find_all(class_ = "title", name = "h3")
 
-movies = [tag.text for tag in movie_tags]
+movies = [tag.text for tag in movie_tags][::-1]
 
-with open("movies.txt", "w") as file:
+# Reverse the order of the list
+
+
+with open("movies.txt", "w", encoding="utf-8") as file:
     for movie in movies:
         file.write(f"{movie} \n")
 print(movies)
