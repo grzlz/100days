@@ -16,13 +16,11 @@ upvotes = [tag.text for tag in soup.find_all(class_ = "score")]
 # Transform upvotes to numeric upvotes 
 numeric_upvotes = [int(vote.split()[0]) for vote in upvotes]
 
+largest_votes_index = numeric_upvotes.index(max(numeric_upvotes))
 
-print(numeric_upvotes)
-
-
-
-
-
+print(titles[largest_votes_index])
+print(links[largest_votes_index])
+print(numeric_upvotes[largest_votes_index])
 
 
 
