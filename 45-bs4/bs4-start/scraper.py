@@ -5,26 +5,23 @@ class Scraper():
     def __init__(self, website):
         self.website = website
 
-
     def scrape(self):
-        print(self.website)
+        website = requests.get(self.website).text
+        soup = BeautifulSoup(website, 'html.parser')
+        movie_tags = soup.find_all(class_ = "title", name = "h3")
+        self.movies = [tag.text for tag in movie_tags][::-1]
+    
+    def show(self):
+        print(self.movies)
 
+    def get_list(self):
+        return self.movies
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def write(self, file_name):
+        with open(file_name, "w", encoding="utf-8") as file:
+            for movie in self.movies:
+                file.write(f"{movie} \n")
+        print(f"File {file_name} succesfuly created!")
 
 
 
