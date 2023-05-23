@@ -5,7 +5,6 @@ auth_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
 urn = 'spotify:artist:3jOstUTkEu2JkjvRdBA5Gu'
-sp = spotipy.Spotify()
 
 artist = sp.artist(urn)
 print(artist)
