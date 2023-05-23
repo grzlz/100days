@@ -1,13 +1,16 @@
 import spotipy
+import sys
 from spotipy.oauth2 import SpotifyClientCredentials
 
-lz_uri = 'spotify:artist:36QJpDe2go2KgaRleHCDTp'
+spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials())
 
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
-results = spotify.artist_top_tracks(lz_uri)
+if len(sys.argv) > 1:
+    name = ' '.join(sys.argv[1:])
+else:
+    name = 'Radiohead'
 
-for track in results['tracks'][:10]:
-    print('track    : ' + track['name'])
-    print('audio    : ' + track['preview_url'])
-    print('cover art: ' + track['album']['images'][0]['url'])
-    print()
+results = spotify.search(q='artist:' + name, type='artist')
+items = results['artists']['items']
+if len(items) > 0:
+    artist = items[0]
+    print(artist['name'], artist['images'][0]['url'])
