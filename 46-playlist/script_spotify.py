@@ -10,3 +10,4 @@ user_id = sp.current_user()["id"]
 sp.user_playlist_create(user_id, "Spotipy", public=False)
 
 # Next, find 10 songs URIS from scraped list
+# Search spotify for the song from step 1
