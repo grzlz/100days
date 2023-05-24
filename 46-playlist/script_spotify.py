@@ -1,8 +1,8 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-scope = "user-read-currently-playing"
+scope = "playlist-modify-private"
 auth_manager = SpotifyOAuth(scope=scope)
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-print(sp.current_user())
+sp.user_playlist_create('12132153305', "Spotipy", public=False)
