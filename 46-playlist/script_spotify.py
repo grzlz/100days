@@ -1,5 +1,4 @@
 import os
-import json
 import spotipy
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
@@ -19,16 +18,14 @@ results = sp.current_user_saved_tracks()
 user_id = sp.current_user()["id"]
 
 
+def get_uris(songs):
 
+    uris = []
 
-# TODO get URI for 5 songs
-songs = ["Time Pinkfloyd", "Atrevetete Calle 13", "Afuera Caifanes", "Nada personal Soda Estereo", "Fuego Bomba Estereo"]
-uris = []
+    for song in songs:
+        uris.append(sp.search(song, limit=1).get("tracks").get("items")[0].get("uri"))
 
-for song in songs:
-    uris.append(sp.search(song, limit=1).get("tracks").get("items")[0].get("uri"))
-
-print(uris)
+    return uris
 
 # print(sp.search("Time pinkfloyd", limit=1).get("tracks").get("items")[0].get("uri"))
 

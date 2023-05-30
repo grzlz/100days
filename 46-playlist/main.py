@@ -1,5 +1,4 @@
 from scraper import get_song_list
 
 user_date = input("Introduce una fecha para iniciar tu viaje musical.")
-
-print(get_song_list(user_date))
+songs = get_song_list(user_date)
