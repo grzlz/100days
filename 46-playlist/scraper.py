@@ -6,4 +6,5 @@ def get_song_list(date):
     soup = BeautifulSoup(site, "html.parser")
     songs = soup.select("li ul li h3")
     names = [tag.text.strip() for tag in songs]
+    
     return names

@@ -8,20 +8,15 @@ load_dotenv()
 client_id = os.getenv('CLIENT_ID')
 client_secret = os.getenv('CLIENT_SECRET')
 
-
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
                                                client_secret=client_secret,
                                                redirect_uri="http://example.com",
                                                scope="user-library-read"))
-
 results = sp.current_user_saved_tracks()
 user_id = sp.current_user()["id"]
 
-
 def get_uris(songs):
-
     uris = []
-
     for song in songs:
         uris.append(sp.search(song, limit=1).get("tracks").get("items")[0].get("uri"))
 
