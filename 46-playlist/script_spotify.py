@@ -21,10 +21,6 @@ def get_uris(songs):
 
     return uris
 
-
 def create_playlist(uris):
     playlist_id = sp.user_playlist_create(user_id, "Spotipy Billboard", public=False).get("id")
     sp.playlist_add_items(playlist_id=playlist_id, items= uris)
-
-
-# print(sp.search("Time pinkfloyd", limit=1).get("tracks").get("items")[0].get("uri"))

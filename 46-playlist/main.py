@@ -7,3 +7,9 @@ uris = get_uris(songs)
 
 if __name__ == "__main__":
     create_playlist(uris)
+
+
+# TODO incorporate logging
+# TODO incorporate year in song search
+# TODO I want to see what songs will be added
+# TODO incorporate error handling
