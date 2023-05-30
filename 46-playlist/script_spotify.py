@@ -20,7 +20,7 @@ def get_uris(songs):
     for song in songs:
         print(i, song)
         try:
-            uris.append(sp.search(f"{song} 1996", limit=1).get("tracks").get("items")[0].get("uri"))
+            uris.append(sp.search(f"{song}", limit=1).get("tracks").get("items")[0].get("uri"))
         except:
             print(f"{song} does not exist in Spotify.")
         i += 1
