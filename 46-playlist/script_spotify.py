@@ -1,4 +1,5 @@
 import os
+import json
 import spotipy
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
@@ -17,7 +18,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
 results = sp.current_user_saved_tracks()
 user_id = sp.current_user()["id"]
 
-print(sp.search("Time pinkfloyd"))
+print(sp.search("Time pinkfloyd", limit=1).get("tracks").get("items")[0].get("uri"))
 
 """ 
 scope = "playlist-modify-private"
