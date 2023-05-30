@@ -15,15 +15,15 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
                                                scope="user-library-read"))
 
 results = sp.current_user_saved_tracks()
+user_id = sp.current_user()["id"]
 
-print(results)
+print(sp.search("Time pinkfloyd"))
 
 """ 
 scope = "playlist-modify-private"
 auth_manager = SpotifyOAuth(scope=scope)
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-user_id = sp.current_user()["id"]
 
 sp.user_playlist_create(user_id, "Spotipy", public=False)
 
