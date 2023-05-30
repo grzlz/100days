@@ -18,7 +18,19 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
 results = sp.current_user_saved_tracks()
 user_id = sp.current_user()["id"]
 
-print(sp.search("Time pinkfloyd", limit=1).get("tracks").get("items")[0].get("uri"))
+
+
+
+# TODO get URI for 5 songs
+songs = ["Time Pinkfloyd", "Atrevetete Calle 13", "Afuera Caifanes", "Nada personal Soda Estereo", "Fuego Bomba Estereo"]
+uris = []
+
+for song in songs:
+    uris.append(sp.search(song, limit=1).get("tracks").get("items")[0].get("uri"))
+
+print(uris)
+
+# print(sp.search("Time pinkfloyd", limit=1).get("tracks").get("items")[0].get("uri"))
 
 """ 
 scope = "playlist-modify-private"
