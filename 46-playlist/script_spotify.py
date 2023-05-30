@@ -16,9 +16,14 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
 user_id = sp.current_user()["id"]
 def get_uris(songs):
     uris = []
+    i = 1
     for song in songs:
-        uris.append(sp.search(song, limit=1).get("tracks").get("items")[0].get("uri"))
-
+        print(i, song)
+        try:
+            uris.append(sp.search(f"{song} 1996", limit=1).get("tracks").get("items")[0].get("uri"))
+        except:
+            print(f"{song} does not exist in Spotify.")
+        i += 1
     return uris
 
 def create_playlist(uris):
